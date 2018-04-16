@@ -44,9 +44,9 @@
 1、路由页面切换时的自定义动画效果存在BUG<br>
 2、当页面存在FlatList组件时，在componentWillMount/componentDidMount里start一个无限循环的动画导致FlatList列表数据不显示。<br>
 3、borderRadius在android低版本(目前测试的4.1.2)下的绘制不完美<br>
-4、视频在全屏状态下，低版本android对StatusBar hidden的支持问题<br>
+4、视频在全屏状态下，低版本android对StatusBar hidden的兼容问题<br>
 
 
 # 其它：
-1、由于接口权限原因，打开新闻详情页面、视频页面时可能出现空白，无法正常请求到新闻数据显示。<br>
-2、直播和新闻评论功能尚未开发，有相关接口的童鞋可以私我共同开发学习。<br>
+* 由于接口权限原因，打开新闻详情页面、视频页面时可能出现空白，无法正常请求到新闻数据显示。<br>
+* 直播和新闻评论功能尚未开发，有相关接口的童鞋可以私我共同开发学习。<br>
