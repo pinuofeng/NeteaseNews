@@ -5,6 +5,8 @@
 import MianTab from './TabNavigator'
 import NewsDetail from './pages/subPages/NewsDetail'
 import VideoDetail from './pages/subPages/VideoDetail'
+import NewsSearch from './pages/subPages/NewsSearch'
+
 
 /*
 
@@ -49,6 +51,13 @@ const RouteConfigs = {
     },
     VideoDetail: {
         screen: VideoDetail,
+        navigationOptions: ({navigation}) => ({
+            header: null,
+            gesturesEnabled: true
+        })
+    },
+    NewsSearch: {
+        screen: NewsSearch,
         navigationOptions: ({navigation}) => ({
             header: null,
             gesturesEnabled: true
