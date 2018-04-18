@@ -17,6 +17,8 @@ import ScrollableTabView, {DefaultTabBar,ScrollableTabBar} from 'react-native-sc
 import XFFlatList from '../components/HomeFlatList'
 import { isLT19 } from '../utils/ScreenUtil'
 
+import ajax from './../utils/fetch'
+
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 export default class Home extends PureComponent {
@@ -60,7 +62,7 @@ export default class Home extends PureComponent {
                 <TouchableOpacity activeOpacity={1} onPress={()=>{ alert('hello') }}>
                     <Image source={require('./../../assets/images/logo.png')} resizeMode={'contain'} style={styles.headerLogo}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.headerSearchContainer} activeOpacity={.9} onPress={()=>{alert('search')}}>
+                <TouchableOpacity style={styles.headerSearchContainer} activeOpacity={.9} onPress={()=>{this.props.navigation.push('NewsSearch')}}>
                     <Image source={require('./../../assets/images/i_search.png')} resizeMode={'contain'} style={styles.headerSearchImg}/>
                     <Text style={styles.headerSearchText}>搜索新闻、热点</Text>
                 </TouchableOpacity>
