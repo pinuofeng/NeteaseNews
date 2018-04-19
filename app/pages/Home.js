@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import ScrollableTabView, {DefaultTabBar,ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import XFFlatList from '../components/HomeFlatList'
+import Swiper from '@nart/react-native-swiper';
 import { isLT19 } from '../utils/ScreenUtil'
 
 import ajax from './../utils/fetch'
@@ -45,6 +46,18 @@ export default class Home extends PureComponent {
         {columnName: '体育', requestCode: 'T1348649079062'}
     ];
 
+    swiperData = [
+        '华为不看好5G',
+        '陶渊明后人做主播',
+        '尔康制药遭处罚',
+        '卢恩光行贿一案受审',
+        '盖茨力挺扎克伯格',
+        '大连特大刑事案件',
+        '高校迷香盗窃案',
+        '少年被批评后溺亡',
+        '北京工商约谈抖音'
+    ];
+
 
     componentDidMount() {
 
@@ -62,10 +75,26 @@ export default class Home extends PureComponent {
                 <TouchableOpacity activeOpacity={1} onPress={()=>{ alert('hello') }}>
                     <Image source={require('./../../assets/images/logo.png')} resizeMode={'contain'} style={styles.headerLogo}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.headerSearchContainer} activeOpacity={.9} onPress={()=>{this.props.navigation.push('NewsSearch')}}>
-                    <Image source={require('./../../assets/images/i_search.png')} resizeMode={'contain'} style={styles.headerSearchImg}/>
-                    <Text style={styles.headerSearchText}>搜索新闻、热点</Text>
-                </TouchableOpacity>
+                <View style={styles.headerSearchContainer}>
+                    <Swiper
+                        horizontal={false}
+                        autoplay={true}
+                        showsPagination={false}
+                        scrollEnabled={false}
+                        autoplayTimeout={5}
+                    >
+                        {
+                            this.swiperData.map((item, index) => {
+                                return (
+                                    <TouchableOpacity activeOpacity={1} key={index} style={styles.swiperItem} onPress={()=>{ this.props.navigation.push('NewsSearch', {keyword: item}) }}>
+                                        <Image source={require('./../../assets/images/i_search.png')} resizeMode={'contain'} style={styles.headerSearchImg}/>
+                                        <Text style={styles.headerSearchText}>{item}</Text>
+                                    </TouchableOpacity>
+                                )
+                            })
+                        }
+                    </Swiper>
+                </View>
                 <TouchableOpacity activeOpacity={1} onPress={()=>{alert('24h')}}>
                     <Image source={require('./../../assets/images/i_24h.png')} resizeMode={'contain'} style={styles.headerRightImg}/>
                 </TouchableOpacity>
@@ -80,7 +109,7 @@ export default class Home extends PureComponent {
 
                 <ScrollableTabView
                     ref={'tabView'}
-                    renderTabBar={() => <ScrollableTabBar style={{borderBottomWidth: 0, paddingBottom: 5, width: screenWidth* .9}} />}
+                    renderTabBar={() => <ScrollableTabBar style={{borderBottomWidth: 0, paddingBottom: 5, width: screenWidth* .9, height: 45}} />}
                     tabBarUnderlineStyle={{ height: 2, minWidth: Math.floor(screenWidth* .9/5), backgroundColor: 'rgba(216,30,6,.8)'}}
                     tabBarInactiveTextColor="#515151"
                     tabBarActiveTextColor="#d81e06"
@@ -127,34 +156,37 @@ const styles = StyleSheet.create({
         backgroundColor: '#d81e06',
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: 70,
+        height: 65,
         paddingTop: isLT19()?0:25,
         paddingBottom: 5
     },
     headerLogo: {
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
     },
     headerSearchContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
         width: screenWidth * 0.7,
-        height: 35,
+        height: 33,
         borderRadius: 18,
         backgroundColor: 'rgba(255,255,255,.3)'
+    },
+    swiperItem: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     headerSearchImg: {
         width: 17,
         height: 17,
-        marginRight: 3
+        marginRight: 5
     },
     headerSearchText: {
         color: '#F8F8F8'
     },
     headerRightImg: {
-        width: 30,
-        height: 30,
+        width: 27,
+        height: 27,
     },
     tabViewItemContainer: {
         flex: 1,

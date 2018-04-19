@@ -1,3 +1,4 @@
+
 /**
  * Created by HuangXiaoFeng on 2018-02-08.
  */
@@ -24,6 +25,31 @@ import {
 
 const { width, height } = Dimensions.get('window');
 
+
+class Child extends PureComponent{
+
+    // 构造器
+    constructor(props){
+        super(props);
+        this.state = {
+            isShow: true,
+        };
+    }
+
+    _changeState = ()=>{
+        this.setState({isShow: !this.state.isShow});
+    };
+
+    render(){
+        return (
+            this.state.isShow
+                ? <View style={{marginBottom: 20}}><Text>我是子组件</Text><Button title="子Btn也可以控制显示隐藏" onPress={()=>{ this.setState({isShow: !this.state.isShow}) }}/></View>
+                : null
+        )
+    }
+
+}
+
 export default class Live extends PureComponent{
 
     // 构造器
@@ -35,21 +61,18 @@ export default class Live extends PureComponent{
     }
 
     _leftComponent = ()=>{
-
         return (
-        <TouchableOpacity activeOpacity={.9} style={{flexDirection: 'row', alignItems: 'center'}} onPress={()=>{alert('返回')}}>
-            <Icon
-                name='angle-left'
-                type='font-awesome'
-                color='#fff'
-                iconStyle={{marginRight: 10}}
-                size={30}
-            />
-            <Text style={{color: '#fff', fontSize: 15}}>返回</Text>
-        </TouchableOpacity>
-
+            <TouchableOpacity activeOpacity={.9} style={{flexDirection: 'row', alignItems: 'center'}} onPress={()=>{alert('返回')}}>
+                <Icon
+                    name='angle-left'
+                    type='font-awesome'
+                    color='#fff'
+                    iconStyle={{marginRight: 10}}
+                    size={30}
+                />
+                <Text style={{color: '#fff', fontSize: 15}}>返回</Text>
+            </TouchableOpacity>
         )
-
     };
 
     render() {
@@ -61,6 +84,10 @@ export default class Live extends PureComponent{
                     centerComponent={{ text: '直播', style: { color: '#fff', fontSize: 18 } }}
                     rightComponent={{ icon: 'home', color: '#fff' }}
                 />
+
+                <Child ref="childComponent" />
+                <Button title="显示/隐藏" onPress={()=>{this.refs['childComponent']._changeState()}}/>
+
 
                 <Icon
                     name='heartbeat'

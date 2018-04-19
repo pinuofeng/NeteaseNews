@@ -28,7 +28,8 @@ export default class NewsSearch extends PureComponent{
     constructor(props){
         super(props);
         this.state = {
-
+            searchValue: this.props.navigation.state.params.keyword,
+            placeholder: this.props.navigation.state.params.keyword
         };
     }
 
@@ -91,7 +92,7 @@ export default class NewsSearch extends PureComponent{
                         <TextInput
                             ref={ref => this.search = ref}
                             style={styles.inputStyle}
-                            placeholder={'请输入'}
+                            placeholder={this.state.placeholder}
                             placeholderTextColor="#bfbfbf"
                             underlineColorAndroid="transparent"
                             onChangeText={this._onChangeText}
