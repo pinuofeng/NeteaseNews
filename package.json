@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nart/react-native-swiper": "^1.5.13",
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.2",

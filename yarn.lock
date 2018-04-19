@@ -392,6 +392,13 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@nart/react-native-swiper@^1.5.13":
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/@nart/react-native-swiper/-/react-native-swiper-1.5.13.tgz#293ac58edcb57afb37221a1f69dcfaf1251306de"
+  dependencies:
+    prop-types "^15.5.10"
+    react-native-vertical-view-pager "^0.1.1"
+
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -4430,6 +4437,10 @@ react-native-vector-icons@^4.6.0:
     lodash "^4.0.0"
     prop-types "^15.5.10"
     yargs "^8.0.2"
+
+react-native-vertical-view-pager@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-vertical-view-pager/-/react-native-vertical-view-pager-0.1.1.tgz#c9ad2f3eb936219ff21cabd6d5842468a5ddbee3"
 
 react-native-video@^2.0.0:
   version "2.0.0"
