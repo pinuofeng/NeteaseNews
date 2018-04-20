@@ -10,7 +10,8 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Easing
 } from 'react-native';
 
 import {
@@ -23,7 +24,9 @@ import {
     Rating
 } from 'react-native-elements';
 
-const { width, height } = Dimensions.get('window');
+import Modal from 'react-native-modalbox';
+
+const {width: screenW, height: screenH } = Dimensions.get('window');
 
 
 class Child extends PureComponent{
@@ -57,6 +60,7 @@ export default class Live extends PureComponent{
         super(props);
         this.state = {
             isShow: true,
+            isOpen: false
         };
     }
 
@@ -121,6 +125,33 @@ export default class Live extends PureComponent{
                     }}
                 />
 
+
+                <Button
+                    title={'购买'}
+                    buttonStyle={{ width: 170, height: 40, borderRadius: 10, }}
+                    onPress={()=>{
+                        this.setState({isOpen: !this.state.isOpen});
+                    }}
+                />
+
+                {/* 滑动弹窗 */}
+                <Modal
+                    ref={"modal"}
+                    style={styles.modal}
+                    isOpen={this.state.isOpen}
+                    onOpened={() => {}}
+                    onClosed={() => this.setState({isOpen: false})}
+                    position={"bottom"}
+                    swipeToClose={false}
+                    easing={Easing.elastic(0)}
+                    animationDuration={250}
+                    backButtonClose // android下按返回键关闭
+                >
+                    <TouchableOpacity style={styles.closeBtn} activeOpacity={1} onPress={()=> this.setState({isOpen: !this.state.isOpen})}>
+                        <Text>X</Text>
+                    </TouchableOpacity>
+                </Modal>
+
             </View>
         );
     }
@@ -131,6 +162,22 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
+    },
+    modal: {
+        height: 400,
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+    },
+    closeBtn: {
+        width: 30,
+        height: 30,
+        borderWidth: 1,
+        borderColor: '#bfbfbf',
+        borderRadius: 15,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-end'
     }
 
 
