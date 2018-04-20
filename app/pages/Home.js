@@ -61,6 +61,19 @@ export default class Home extends PureComponent {
 
     componentDidMount() {
 
+        //测试storage保存，然后再新闻详情组件读取
+        storage.save({
+            key: 'userInfo',  // 注意:请不要在key中使用_下划线符号!
+            data: {
+                userName: '小明',
+                userId: '98765465465454',
+                token: 'dsasadsa4566464'
+            },
+            // 如果不指定过期时间，则会使用defaultExpires参数
+            // 如果设为null，则永不过期
+            expires: 1000 * 3600
+        });
+
     }
 
 
