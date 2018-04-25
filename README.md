@@ -1,6 +1,8 @@
 # NeteaseNews
 这是一个ReactNative仿网易新闻APP的Demo.
 
+## 启动页：
+![Image text](https://github.com/h406621397/ImageRepository/blob/master/Screenshot_1524643809.png)
 
 ## 首页：
 ![Image text](https://github.com/h406621397/ImageRepository/blob/master/Screenshot_1522724420.png)
@@ -37,7 +39,9 @@
 4、使用react-native-htmlview实现图文新闻详情页功能<br>
 5、使用react-native-video、react-native-orientation实现视频新闻详情页功能<br>
 6、安卓下添加了对GIF图片的支持(IOS默认支持)<br>
-7、"我的"页面添加了RN动画<br>
+7、使用react-native-splash-screen添加了APP启动页，避免APP启动白屏<br>
+8、"我的"页面添加了RN动画<br>
+
 
 
 # 项目中的问题：

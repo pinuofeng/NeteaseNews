@@ -1,10 +1,12 @@
 
 import React, { PureComponent } from 'react';
-import { BackHandler } from 'react-native'
+import { BackHandler, InteractionManager } from 'react-native'
 import { StackNavigator } from 'react-navigation';
 import RouteConfigs from './app/RouteConfigs'
 import StackNavigatorConfig from './app/StackNavigatorConfig'
+import SplashScreen from 'react-native-splash-screen'
 import './app/storage/store'
+
 
 // 创建导航器，传入路由配置和导航配置
 const Navigator = StackNavigator(RouteConfigs, StackNavigatorConfig);
@@ -22,6 +24,13 @@ export default class App extends PureComponent {
             }
             return false;
         });
+
+        setTimeout(() => {
+            InteractionManager.runAfterInteractions(() => {
+                SplashScreen.hide();
+            });
+        }, 1000);
+
 
     }
 
