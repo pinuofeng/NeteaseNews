@@ -25,9 +25,11 @@
 ## 我的:
 ![Image text](https://github.com/h406621397/ImageRepository/blob/master/Screenshot_1523170589.png)
 
+## 热更新：
+![Image text](https://github.com/h406621397/ImageRepository/blob/master/Screenshot_1524805643.png)
+
 
 # 运行项目：
-
 1、NeteaseNews目录下执行yarn或npm i 命令。<br>
 2、执行react-native run-android或npm run android命令。<br>
 
@@ -41,6 +43,8 @@
 6、安卓下添加了对GIF图片的支持(IOS默认支持)<br>
 7、使用react-native-splash-screen添加了APP启动页，避免APP启动白屏<br>
 8、"我的"页面添加了RN动画<br>
+9、添加了storage(数据存储)、elements(UI组件)、swiper(滑动)、vector-icons(图标)等常用库<br>
+10、使用CodePush实现了热更新功能，可静默更新或提示更新<br>
 
 
 

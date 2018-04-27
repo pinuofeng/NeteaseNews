@@ -11,6 +11,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,12 @@ import java.util.List;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
+    
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -30,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SplashScreenReactPackage(),
             new VectorIconsPackage(),
             new OrientationPackage(),
-            new ReactVideoPackage()
+            new ReactVideoPackage(),
+            new CodePush("S6xjIHtxDw5K6j0bRpD9i1Uf1OuZdef8d553-8f67-40fd-aead-ce7d5d17726d", MainApplication.this, BuildConfig.DEBUG)
       );
     }
 
