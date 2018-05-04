@@ -4646,6 +4646,16 @@ react-native-htmlview@^0.12.1:
     entities "^1.1.1"
     htmlparser2-without-node-native "^3.9.2"
 
+react-native-image-pan-zoom@^2.1.2:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-pan-zoom/-/react-native-image-pan-zoom-2.1.3.tgz#1f1847518eb0d10a43fce20ee387a9f273dacd9a"
+
+react-native-image-zoom-viewer@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-zoom-viewer/-/react-native-image-zoom-viewer-2.2.1.tgz#0db17d53128a8b1b639b01aa33fe455f1ffeaadc"
+  dependencies:
+    react-native-image-pan-zoom "^2.1.2"
+
 react-native-modalbox@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/react-native-modalbox/-/react-native-modalbox-1.4.2.tgz#818c9354c9b13327ec807c6436e8516b3b419478"

@@ -12,10 +12,14 @@ import {
     View,
     Alert,
     Image,
-    ScrollView
+    ScrollView,
+    Modal,
+    TouchableOpacity,
+    StatusBar
 } from 'react-native';
 import ajax from './../../utils/fetch'
-import HTMLView from 'react-native-htmlview';
+import HTMLView from 'react-native-htmlview'
+import ImageViewer from 'react-native-image-zoom-viewer';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import Header from './../../components/Header'
 
@@ -29,6 +33,8 @@ export default class NewsDetail extends PureComponent{
         this.state = {
             newsData: '',
             body: '',
+            isShowImgModal: false,
+            statusBarTranslucent : true,
         };
     }
 
@@ -36,7 +42,6 @@ export default class NewsDetail extends PureComponent{
     static defaultProps = {
 
     };
-
 
     componentWillMount() {
 
@@ -115,14 +120,47 @@ export default class NewsDetail extends PureComponent{
 
     }
 
-    _renderNode(node, index, siblings, parent, defaultRenderer) {
+    imgIndex = -1;
+    imgArr = [];
+    initIndex = 0;
+
+    _renderNode = (node, index, siblings, parent, defaultRenderer) => {
         if (node.name === 'img') {
-            const a = node.attribs;
+            this.imgIndex++;
+            let nodeAttr = node.attribs;
+            let num = this.imgIndex;
+            this.imgArr.push({url: nodeAttr.src});
             return (
-                <Image source={{uri:a.src}} key={index} resizeMode={'stretch'} style={{flex: 1, height: 230, marginBottom: 35 }} />
+                <TouchableOpacity key={index} activeOpacity={1} onPress={ ()=>{ this._showImgModal(num) } }>
+                    <Image source={{uri: nodeAttr.src}} resizeMode={'stretch'} style={{flex: 1, height: this._getImgHeight(nodeAttr.src), marginBottom: 35 }} />
+                </TouchableOpacity>
             );
         }
-    }
+    };
+
+    // 图片高度自适应
+    _getImgHeight = (imageUri) => {
+        let imgHeight = 230;
+        Image.getSize(imageUri,(width,height) => {
+            imgHeight = Math.floor(screenWidth/width*height);
+        });
+        return imgHeight
+    };
+
+    _showImgModal = (index) => {
+        this.initIndex = index;
+        this.setState({
+            isShowImgModal: true,
+            statusBarTranslucent: false
+        });
+    };
+
+    _closeImgModal = () => {
+        this.setState({
+            isShowImgModal: false,
+            statusBarTranslucent: true
+        })
+    };
 
     _onScroll = (event)=>{
 
@@ -133,6 +171,10 @@ export default class NewsDetail extends PureComponent{
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar
+                    translucent={ this.state.statusBarTranslucent }
+                    backgroundColor={ this.state.statusBarTranslucent? '#d81e06': '#000' }
+                />
                 <Header navigation={this.props.navigation} />
                 <ScrollView
                     //scrollEventThrottle={200}
@@ -147,9 +189,16 @@ export default class NewsDetail extends PureComponent{
                         onLinkPress={(url) => alert('clicked link: ', url)}
                         stylesheet={htmlStyles}
                         style={{padding: 10}}
+                        saveToLocalByLongPress={false}
                         renderNode={this._renderNode}
                     />
                 </ScrollView>
+
+                {/* 图片Modal */}
+                <Modal visible={this.state.isShowImgModal} transparent={false} onRequestClose={ this._closeImgModal }>
+                    <ImageViewer index={this.initIndex} imageUrls={this.imgArr} onClick={ this._closeImgModal } />
+                </Modal>
+
             </View>
         );
     }

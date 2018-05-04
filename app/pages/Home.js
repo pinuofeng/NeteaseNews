@@ -81,7 +81,7 @@ export default class Home extends PureComponent {
         return(
         <View style={styles.container}>
             {/* 状态栏 */}
-            <StatusBar backgroundColor={'rgba(255,255,255, 0)'} translucent={true} animated={true}/>
+            <StatusBar backgroundColor={'rgba(255,255,255, 0)'} translucent={true}/>
 
             {/* 头部 */}
             <View style={styles.headerContainer}>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#d81e06',
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: 65,
+        height: 70,
         paddingTop: isLT19()?0:25,
         paddingBottom: 5
     },
