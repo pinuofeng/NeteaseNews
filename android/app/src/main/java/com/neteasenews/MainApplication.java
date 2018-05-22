@@ -12,6 +12,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.microsoft.codepush.react.CodePush;
+import com.neteasenews.module.RNPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new OrientationPackage(),
             new ReactVideoPackage(),
-            new CodePush("S6xjIHtxDw5K6j0bRpD9i1Uf1OuZdef8d553-8f67-40fd-aead-ce7d5d17726d", MainApplication.this, BuildConfig.DEBUG)
+            new CodePush("S6xjIHtxDw5K6j0bRpD9i1Uf1OuZdef8d553-8f67-40fd-aead-ce7d5d17726d", MainApplication.this, BuildConfig.DEBUG),
+            new RNPackage()
       );
     }
 

@@ -11,7 +11,9 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Easing
+    Easing,
+    NativeModules,
+    Linking
 } from 'react-native';
 
 import {
@@ -133,6 +135,30 @@ export default class Live extends PureComponent{
                         this.setState({isOpen: !this.state.isOpen});
                     }}
                 />
+
+                <Button
+                    title={'跳转第三方APP'}
+                    buttonStyle={{ width: 170, height: 40, borderRadius: 10, }}
+                    onPress={()=>{
+                        Linking.canOpenURL('wzapp://wisdomzone/NewsDetail').then(supported => {
+                            if (supported) {
+                                Linking.openURL('wzapp://wisdomzone/NewsDetail');
+                            } else {
+                                alert('无法打开该URI: ' + 'wzapp://wisdomzone/NewsDetail');
+                            }
+                        })
+                    }}
+                />
+
+                <Button
+                    title={'原生弹框'}
+                    buttonStyle={{ width: 170, height: 40, borderRadius: 10, }}
+                    onPress={()=>{
+                        NativeModules.RNNativeModule.show('成功调用原生方法');
+                    }}
+                />
+
+
 
                 {/* 滑动弹窗 */}
                 <Modal
