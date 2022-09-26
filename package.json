@@ -12,7 +12,7 @@
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.2",
-    "react-native-code-push": "^5.3.2",
+    "react-native-code-push": "^5.7.0",
     "react-native-easy-toast": "^1.1.0",
     "react-native-elements": "^0.19.1",
     "react-native-htmlview": "^0.12.1",
